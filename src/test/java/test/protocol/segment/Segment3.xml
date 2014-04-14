@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<segment id="ss">
+<segment>
 	<properies>
 		<p name="package">test.protocol</p>
 	</properies>

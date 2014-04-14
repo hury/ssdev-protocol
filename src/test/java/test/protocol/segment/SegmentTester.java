@@ -47,6 +47,7 @@ public class SegmentTester extends TestCase {
 		ValidateStatus status = xmlMsg.validate();
 		System.out.println(xmlMsg.getData().asXML());
 		System.out.println(status);
+		
 	}
 	
 

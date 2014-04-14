@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="request" name="检验报告申请">
+	<properies>
+		<p name="package">test.protocol</p>
+	</properies>
+	<attribute type="meta.MetaSet2.versionId"/>
+	<element id="pid" name="病人标识" type="string" length="3" require="true"/>
+	<element id="sec" name="申请部门" type="string"/>
+	<element id="dct" name="申请人" type="string"/>
+	<element id="reqDt" name="申请时间" type="date"  defaultValue="%date.now"/>
+	<element id="item" name="申请项目" type="string" minoccurs="1" maxoccurs="3">
+		<attribute id="id" type="string" />
+	</element>
+</message>

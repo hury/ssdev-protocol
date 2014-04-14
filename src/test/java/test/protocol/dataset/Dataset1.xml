@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset name="检验报告" xmlns:meta="http://ssdev.com/meta" xmlns:segment="http://ssdev.com/segment">
+	<properies>
+		<p name="package">test.protocol</p>
+	</properies>
+	<attribute type="meta.MetaSet2.versionId" />
+	<segment:element type="segment.Segment1" id="PT" require="true">
+		<meta:element type="meta.MetaSet1.ID" require="true"/>
+		<element type="int" id="visitTimes" name="访问次数"/>
+	</segment:element>
+	<element type="date" id="reportData" name="报告时间"  require="false"/>
+</dataset>

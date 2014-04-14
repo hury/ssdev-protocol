@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message name="检验报告申请" id="RPTRequest">
+	<properies>
+		<p name="package">test.protocol</p>
+	</properies>
+	<attribute type="meta.MetaSet2.versionId" />
+	<element type="dataset.Dataset1" id="RPT" require="true"/>
+	<element type="date" id="reportData" name="报告时间"  defaultValue="%date.now" require="false"/>
+</message>

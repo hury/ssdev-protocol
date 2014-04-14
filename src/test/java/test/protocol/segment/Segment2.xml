@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<segment type="segment.Segment1">
+	<properies>
+		<p name="package">test.protocol</p>
+	</properies>
+	<element id="birthday" type="Date" name="生日" />
+</segment>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<segment name="病人信息">
+	<properies>
+		<p name="package">test.protocol</p>
+	</properies>
+	<element type="meta.MetaSet1.PN" minoccurs="1" defaultValue="sean220"/>
+	<element type="string" id="PID" name="病人标识" length="20" require="true" defaultValue="PN1232"/>
+	<element type="meta.MetaSet1.ID"/>
+	<element id="sex" type="meta.MetaSet1.gender"/>
+</segment>

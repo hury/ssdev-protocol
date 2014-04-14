@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset name="检验报告">
+	<properies>
+		<p name="package">test.protocol</p>
+	</properies>
+	<attribute id="versionId" type="meta.MetaSet2.versionId" />
+	<element  id="PT" type="segment.Segment1" require="false">
+		<element type="meta.MetaSet1.ID" require="true"/>
+		<element type="int" id="visitTimes" name="访问次数"/>
+	</element>
+	<element type="date" id="reportData" name="报告时间"  require="false"/>
+</dataset>

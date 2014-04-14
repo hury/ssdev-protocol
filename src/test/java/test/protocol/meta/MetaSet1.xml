@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metaSet>
+	<element id="PN" name="病人姓名" type="string" length="20"/>
+	<element id="ID" name="身份证" type="string" length="18"/>
+	<element id="AGE" name="年龄" type="int"/>
+	<element id="gender" name="性别" type="string" length="1" table="gb.gender"/>
+	<element id="idNumber" name="身份证" class="ctd.protocol.schema.support.meta.ChinaIDNumberMeta"/>
+	<element id="email" name="电子邮件" class="ctd.protocol.schema.support.meta.EMailMeta"/>
+</metaSet>

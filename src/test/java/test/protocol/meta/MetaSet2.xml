@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metaSet>
+	<element id="versionId" name="版本号" type="string" length="10"/>
+	<element id="myDate" type="date" format="yyyyMMddHHmmssZ" class="test.protocol.meta.MyDateMeta"/>
+</metaSet>

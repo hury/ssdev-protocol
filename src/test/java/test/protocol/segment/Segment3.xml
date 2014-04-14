@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<segment id="ss">
+	<properies>
+		<p name="package">test.protocol</p>
+	</properies>
+	<element id="birthday" type="date" name="生日" />
+	<element type="meta.MetaSet1.idNumber" />
+	<element type="meta.MetaSet1.email" />
+</segment>

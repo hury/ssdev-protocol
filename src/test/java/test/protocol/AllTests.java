@@ -17,7 +17,7 @@ public class AllTests {
 		suite.addTestSuite(DatasetTester.class);
 		suite.addTestSuite(MessageTester.class);
 		//$JUnit-END$
-		//test1
+		//test4
 		return suite;
 	}
 

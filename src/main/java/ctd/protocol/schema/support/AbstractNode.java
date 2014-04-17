@@ -184,7 +184,7 @@ public class AbstractNode implements Node{
 					}
 				}
 				else{
-					if(len > length){
+					if(len > length && length > 0){
 						return ValidateStatus.buildStatus(ErrorType.DataLength,"<=" + length,len);
 					}
 				}

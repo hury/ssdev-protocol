@@ -43,7 +43,9 @@ public class SegmentTester extends TestCase {
 		assertEquals(3,s.getChildElementsCount());
 		
 		XMLMessage xmlMsg = XMLMessageFactory.createMessage(s);
+		xmlMsg.child("email").setValue("sean220@gmail.com");
 		xmlMsg.child("idNumber").setValue("332603198002205437");
+		
 		ValidateStatus status = xmlMsg.validate();
 		System.out.println(xmlMsg.getData().asXML());
 		System.out.println(status);

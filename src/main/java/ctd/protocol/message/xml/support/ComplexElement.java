@@ -189,17 +189,22 @@ public class ComplexElement extends AbstractXMLMessage {
 				}
 				else{
 					int expectedPosition = 0;
+					int pos = el.getPosition();
 					if(last != null){
 						if(last.getId().equals(id)){
 							continue;
 						}
 						expectedPosition = last.getPosition() + 1;
 					}
-					
-					if(expectedPosition != el.getPosition()){
-						return ValidateStatus.buildStatus(ErrorType.OrderChoose, "element[" + el.getId() + "] position=" + el.getPosition(),expectedPosition,this);
+					else{
+						if(pos > 0 && !s.getElementAt(pos -1).isRequire()){
+							pos = 0;
+						}
 					}
 					
+					if(expectedPosition != pos){
+						return ValidateStatus.buildStatus(ErrorType.OrderChoose, "element[" + el.getId() + "] position=" + el.getPosition(),expectedPosition,this);
+					}
 					last = el;	
 				}
 				

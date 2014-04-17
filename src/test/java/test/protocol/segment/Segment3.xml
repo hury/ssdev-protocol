@@ -4,6 +4,6 @@
 		<p name="package">test.protocol</p>
 	</properies>
 	<element id="birthday" type="date" name="生日" />
-	<element type="meta.MetaSet1.idNumber" />
 	<element type="meta.MetaSet1.email" />
+	<element type="meta.MetaSet1.idNumber" />
 </segment>

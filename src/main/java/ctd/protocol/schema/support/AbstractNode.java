@@ -191,10 +191,11 @@ public class AbstractNode implements Node{
 				if(table != null){
 					try {
 						if(!DictionaryController.instance().get(table).keyExist(s)){
-							return ValidateStatus.buildStatus(ErrorType.DicItemNotFound,"value=" + s,null);
+							return ValidateStatus.buildStatus(ErrorType.DicItemNotFound,null,s);
 						}
 					} 
 					catch (ControllerException e) {
+						e.printStackTrace();
 						return ValidateStatus.buildStatus(ErrorType.DicNotFound,"table=" + table,null);
 					}
 				}

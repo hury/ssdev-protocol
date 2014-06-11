@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <request versionId="ver3045">
 	<pid>454</pid>
-	<sec/>
+	<sec>06</sec>
 	<dct/>
+	<reqDt>2014-06-11T13:30:45</reqDt>
 	<item id="009">血常规</item>
-	<item id="012">尿常规</item>
+	<item id="009">血常规</item>
+	<item id="009">血常规</item>
 </request>

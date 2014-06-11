@@ -28,13 +28,15 @@ import ctd.util.context.beans.DateBean;
 import ctd.util.xml.XMLHelper;
 import junit.framework.TestCase;
 
-public class ValidateOrderTester extends TestCase {
+public class ValidateOrderPerfTester2 extends TestCase {
 	private XMLMessage xmlMsg;
 	
 	
-	public ValidateOrderTester() throws ControllerException{
-		Message schema = (Message)SegmentController.instance().get("test.protocol.message.Message3");
+	public ValidateOrderPerfTester2() throws ControllerException{
+		Message schema = (Message)SegmentController.instance().get("test.protocol.message.Message4");
 		assertNotNull(schema);
+		
+		System.out.println(schema.getChildElementsCount());
 		
 		ContextUtils.put("date", new DateBean());
 		xmlMsg = XMLMessageFactory.createMessage(schema);
@@ -42,55 +44,36 @@ public class ValidateOrderTester extends TestCase {
 	}
 	
 	public void testOrderValidate() throws ControllerException, IOException, DocumentException{
-		Resource r = ResourceCenter.load("test/protocol/validate/message3Data.xml");
+		Resource r = ResourceCenter.load("test/protocol/validate/message4Data.xml");
 		Document doc = XMLHelper.getDocument(r.getInputStream());
 		assertNotNull(doc);
 		
-		Segment s = (Segment)xmlMsg.getElement();
-		System.out.println(s.getOrder());
-		
-		xmlMsg.addData(doc.getRootElement());
-		System.out.println(xmlMsg.getData().asXML());
-		
-		System.out.println(xmlMsg.child("reqDt").getValue());
-		
-		assertEquals(3, xmlMsg.child("item").getGroupCount());
-		
-		ValidateStatus status = xmlMsg.validate();
-		System.out.println(status);
-		
-	}
-	
-	public void testOrderValidate100000() throws ControllerException, IOException, DocumentException{
-		Resource r = ResourceCenter.load("test/protocol/validate/message3Data.xml");
-		Document doc = XMLHelper.getDocument(r.getInputStream());
-		assertNotNull(doc);
-
-		//xmlMsg.addData(doc.getRootElement());
-	
-		for(int i = 0; i < 1000000; i++){
+		for(int i = 0; i < 500000; i ++){
 			xmlMsg.addData(doc.getRootElement());
-			ValidateStatus status = xmlMsg.validate();
+			xmlMsg.validate();
 			xmlMsg.clear();
 		}
 		
+		
 	}
 	
-	public void testOrderValidateXSD100000() throws ControllerException, IOException, DocumentException, SAXException{
-		Resource r = ResourceCenter.load("test/protocol/validate/message3Data.xml");
+	public void testOrderValidateXSD() throws ControllerException, IOException, DocumentException, SAXException{
+		Resource r = ResourceCenter.load("test/protocol/validate/message4Data.xml");
 		Document doc = XMLHelper.getDocument(r.getInputStream());
+		assertNotNull(doc);
 		String docStr = doc.asXML();
 		
-		
 		 Source schemaFile = new StreamSource(
-				 Thread. currentThread ().getContextClassLoader().getResourceAsStream( "test/protocol/validate/message3.xsd")
+				 Thread. currentThread ().getContextClassLoader().getResourceAsStream( "test/protocol/validate/message4.xsd")
 		 );
 		 SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		 Schema schema = factory.newSchema(schemaFile);
          Validator validator = schema.newValidator();
-         
-         for(int i = 0 ; i < 1000000; i ++){
+		
+         for(int i = 0; i < 500000; i ++){
         	 validator.validate(new StreamSource(new StringReader(docStr)));
          }
 	}
+	
+	
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="request">
+		<complexType>
+			<sequence>
+				<element name="pid" type="string"></element>
+				<element name="sec">
+					<simpleType>
+						<restriction base="token">
+							<enumeration value="01"></enumeration>
+							<enumeration value="02"></enumeration>
+							<enumeration value="03"></enumeration>
+							<enumeration value="04"></enumeration>
+							<enumeration value="05"></enumeration>
+							<enumeration value="06"></enumeration>
+						</restriction>
+					</simpleType>
+				</element>
+				<element name="dct" type="string"/>
+				<element name="reqDt" type="dateTime"/>
+				<element name="item" minOccurs="1" maxOccurs="3">
+					<complexType>
+						<simpleContent>
+							<extension base="string">
+								<attribute name="id" type="string"></attribute>
+							</extension>
+						</simpleContent>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="versionId" type="string"/>
+		</complexType>
+	</element>
+</schema>

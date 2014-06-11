@@ -9,8 +9,10 @@ import ctd.protocol.schema.support.container.Segment;
 
 public class ComplexElementGroup extends AbstractGroup<ComplexElement> {
 	
+	
 	public ComplexElementGroup(Element el) {
 		super(el);
+		
 	}
 
 	@Override
@@ -23,7 +25,8 @@ public class ComplexElementGroup extends AbstractGroup<ComplexElement> {
 	@Override
 	public void addData(org.dom4j.Element data) {
 		index = dataGroup.size();
-		ComplexElement cm = (ComplexElement) XMLMessageFactory.createMessage(el);
+		
+		ComplexElement cm = (ComplexElement) XMLMessageFactory.createComplexElement(el);
 		cm.setPosition(dataGroup.size());
 		cm.setParent(this.getParent());
 		cm.addData(data);
@@ -73,12 +76,14 @@ public class ComplexElementGroup extends AbstractGroup<ComplexElement> {
 		if(!status.isOK()){
 			return status;
 		}
-		
+		int i = 0;
 		for(ComplexElement ce : dataGroup){
 			status = ce.validate();
 			if(!status.isOK()){
+				status.setPosition(" of " + el.getId() + "[" + i +"]");
 				return status;
 			}
+			i ++;
 		}
 		
 		return ValidateStatus.STATUS_OK;

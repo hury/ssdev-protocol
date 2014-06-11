@@ -48,7 +48,8 @@ public class OrderSequenceComplexElement extends ComplexElement {
 				}
 				childEl.detach();
 				childMessages.get(el.getPosition()).addData(childEl);
-			}		
+			}
+			data.clearContent();
 		}
 	}
 	
@@ -70,6 +71,8 @@ public class OrderSequenceComplexElement extends ComplexElement {
 		
 		ElementLink lastLink = rootLink;
 		String lastId = null;
+		Segment s = (Segment)el;
+		int size = s.getChildElementsCount();
 		for(org.dom4j.Element el : els){
 			String name = el.getName();
 			
@@ -77,6 +80,10 @@ public class OrderSequenceComplexElement extends ComplexElement {
 				continue;
 			}
 			else{
+				//is last element of this segment,ignore the extend fields. 
+				if(lastLink.getPosition() == size - 1){
+					break;
+				}
 				if(!lastLink.hasNextElement(name)){
 					return ValidateStatus.buildStatus(ErrorType.ElementPosition,"","element[" + name + "] position invaild.",this);
 				}
@@ -112,6 +119,10 @@ class ElementLink{
 	
 	public ElementLink getNextElement(String id){
 		return nextElements.get(id);
+	}
+	
+	public int getPosition(){
+		return position;
 	}
 	
 	public boolean hasNextElement(String id){

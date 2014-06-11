@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<request versionId="ver3045">
+	<record>
+		<pid>454</pid>
+		<sec>06</sec>
+		<dct/>
+		<reqDt>2014-06-11T13:30:45</reqDt>
+		<item id="009">血常规</item>
+		<item id="009">血常规</item>
+		<item id="009">血常规</item>
+	</record>
+	<record>
+		<pid>454</pid>
+		<sec>02</sec>
+		<dct/>
+		<reqDt>2014-06-11T13:30:45</reqDt>
+		<item id="009">血常规</item>
+		<item id="009">血常规</item>
+		<item id="009">血常规</item>
+	</record>
+	<record>
+		<pid>454</pid>
+		<sec>06</sec>
+		<dct/>
+		<reqDt>2014-06-11T13:30:45</reqDt>
+		<item id="009">血常规</item>
+		<item id="009">血常规</item>
+		<item id="009">血常规</item>
+	</record>
+	<record>
+		<pid>454</pid>
+		<sec>06</sec>
+		<dct/>
+		<reqDt>2014-06-11T13:30:45</reqDt>
+		<item id="009">血常规</item>
+		<item id="009">血常规</item>
+		<item id="009">血常规</item>
+	</record>
+</request>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message id="request" name="检验报告申请" order="SEQUENCE">
+	<properies>
+		<p name="package">test.protocol</p>
+	</properies>
+	<attribute type="meta.MetaSet2.versionId"/>
+	<element id="record" type="segment.Segment4" minoccurs="1" maxoccurs="5" />
+</message>

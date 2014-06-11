@@ -2,8 +2,10 @@ package ctd.protocol.message.xml;
 
 import ctd.protocol.message.exception.MessageException;
 import ctd.protocol.message.xml.support.AnyElement;
-import ctd.protocol.message.xml.support.ComplexElement;
 import ctd.protocol.message.xml.support.ComplexElementGroup;
+import ctd.protocol.message.xml.support.OrderAllComplexElement;
+import ctd.protocol.message.xml.support.OrderChooseComplexElement;
+import ctd.protocol.message.xml.support.OrderSequenceComplexElement;
 import ctd.protocol.message.xml.support.SingleElement;
 import ctd.protocol.message.xml.support.SingleElementGroup;
 import ctd.protocol.schema.Element;
@@ -32,7 +34,15 @@ public class XMLMessageFactory {
 				return new ComplexElementGroup(el);
 			}
 			else{
-				return new ComplexElement(el);
+				Segment s = (Segment)el;
+				switch(s.getOrder()){
+					case ALL:
+						return new OrderAllComplexElement(el);
+					case CHOOSE:
+						return new OrderChooseComplexElement(el);
+					case SEQUENCE:
+						return new OrderSequenceComplexElement(el);
+				}
 			}
 		}
 		

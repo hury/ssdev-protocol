@@ -12,7 +12,7 @@ import ctd.protocol.schema.utils.CompatibleUtils;
 public class AbstractContainer extends AbstractElement implements Container {
 	protected List<Element> elements = new ArrayList<Element>();;
 	protected HashMap<String,Element> elementsMappings = new HashMap<String,Element>();;
-	protected Order order = Order.SEQUENCE;
+	protected Order order = Order.ALL;
 	
 	@Override
 	public Order getOrder() {

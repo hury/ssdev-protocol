@@ -5,16 +5,14 @@ import java.util.List;
 
 import ctd.protocol.message.Message;
 import ctd.protocol.message.exception.MessageException;
-import ctd.protocol.message.validate.ErrorType;
 import ctd.protocol.message.validate.ValidateStatus;
 import ctd.protocol.message.validate.Validator;
 import ctd.protocol.message.xml.XMLMessage;
 import ctd.protocol.message.xml.XMLMessageFactory;
 import ctd.protocol.schema.Element;
-import ctd.protocol.schema.order.Order;
 import ctd.protocol.schema.support.container.Segment;
 
-public class ComplexElement extends AbstractXMLMessage {
+public abstract class ComplexElement extends AbstractXMLMessage {
 	protected final List<XMLMessage> childMessages;
 	protected org.dom4j.Element data;
 	
@@ -124,93 +122,21 @@ public class ComplexElement extends AbstractXMLMessage {
 	public void setValue(Object v) {
 		
 	}
-
-	@Override
-	public void clear() {
-		for(XMLMessage message: childMessages){
-			message.clear();
-		}
-		data = null;
-	}
-
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public ValidateStatus validate() {
-		org.dom4j.Element data = getData();
-		
 		ValidateStatus status = super.validate();
-		if(!status.isOK()){
+		if(status.isNotOK()){
 			return status;
 		}
+		
+		org.dom4j.Element data = getData();
 		
 		if(data == null && !el.isRequire()){
 			return ValidateStatus.STATUS_OK;
 		}
 		
-		int count = 0;
-		for(int i = 0; i < childMessages.size(); i ++){
-			XMLMessage message = childMessages.get(i);
-			status = message.validate();
-			if(!status.isOK()){
-				return status;
-			}
-			if(message.getData() != null){
-				count ++;
-			}
-		}
-		
 		Segment s = (Segment)el;
-		Order order = s.getOrder();
-		if(order == Order.CHOOSE && count > 1){
-			return ValidateStatus.buildStatus(ErrorType.OrderChoose, "element<=1", count,this);
-		}
-		
-		if(order == Order.SEQUENCE){
-			List<org.dom4j.Element> els = data.elements();
-			Element last = null;
-			for(org.dom4j.Element xmlEl : els){
-				String id = xmlEl.getName();
-				Element el = s.getElementById(id);
-				if(el == null){
-					//define elements is over
-					if(last != null && last.getPosition() == s.getChildElementsCount() - 1){
-						break;
-					}
-					else{
-						Element expectedElement = null;
-						if(last == null){
-							expectedElement = s.getElementAt(0);
-						}
-						else{
-							expectedElement = s.getElementAt(last.getPosition() + 1);
-						}
-						return ValidateStatus.buildStatus(ErrorType.OrderSequence, "expected element[" + expectedElement.getId() +"]", id,this);
-					}
-				}
-				else{
-					int expectedPosition = 0;
-					int pos = el.getPosition();
-					if(last != null){
-						if(last.getId().equals(id)){
-							continue;
-						}
-						expectedPosition = last.getPosition() + 1;
-					}
-					else{
-						if(pos > 0 && !s.getElementAt(pos -1).isRequire()){
-							pos = 0;
-						}
-					}
-					
-					if(expectedPosition != pos){
-						return ValidateStatus.buildStatus(ErrorType.OrderChoose, "element[" + el.getId() + "] position=" + el.getPosition(),expectedPosition,this);
-					}
-					last = el;	
-				}
-				
-			}//for
-		}//if(order == Order.SEQUENCE){
-		
 		Validator validator = s.getValidator();
 		if(validator != null){
 			status = validator.validate(this);
@@ -219,6 +145,14 @@ public class ComplexElement extends AbstractXMLMessage {
 			}
 		}
 		return ValidateStatus.STATUS_OK;
+	}
+
+	@Override
+	public void clear() {
+		for(XMLMessage message: childMessages){
+			message.clear();
+		}
+		data = null;
 	}
 
 }

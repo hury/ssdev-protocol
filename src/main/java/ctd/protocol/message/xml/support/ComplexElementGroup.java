@@ -2,6 +2,7 @@ package ctd.protocol.message.xml.support;
 
 import ctd.protocol.message.Message;
 import ctd.protocol.message.validate.ValidateStatus;
+import ctd.protocol.message.xml.XMLMessageFactory;
 import ctd.protocol.schema.Element;
 import ctd.protocol.schema.support.container.Segment;
 
@@ -22,7 +23,7 @@ public class ComplexElementGroup extends AbstractGroup<ComplexElement> {
 	@Override
 	public void addData(org.dom4j.Element data) {
 		index = dataGroup.size();
-		ComplexElement cm = new ComplexElement(el);
+		ComplexElement cm = (ComplexElement) XMLMessageFactory.createMessage(el);
 		cm.setPosition(dataGroup.size());
 		cm.setParent(this.getParent());
 		cm.addData(data);

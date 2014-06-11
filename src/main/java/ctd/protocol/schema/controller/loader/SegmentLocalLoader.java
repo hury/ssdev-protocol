@@ -1,4 +1,4 @@
-package ctd.protocol.schema.controller;
+package ctd.protocol.schema.controller.loader;
 
 
 import org.apache.commons.lang3.StringUtils;
@@ -24,6 +24,7 @@ public class SegmentLocalLoader extends AbstractConfigurableLoader<Segment> {
 			if(StringUtils.isEmpty(s.getId())){
 				s.setId(StringUtils.substringAfterLast(id, "."));
 			}
+			s.setLastModify(lastModi);
 			return s;
 		}
 		catch(Exception e){

@@ -1,6 +1,8 @@
 package ctd.protocol.schema.support.container;
 
 import java.util.HashMap;
+import java.util.Map;
+
 import ctd.controller.Configurable;
 import ctd.controller.exception.ControllerException;
 import ctd.protocol.message.validate.Validator;
@@ -11,7 +13,7 @@ import ctd.util.converter.ConversionUtils;
 public class Segment extends AbstractContainer implements Configurable{
 	private static final long serialVersionUID = -3621208890004374161L;
 	protected Long lastModi;
-	protected HashMap<String,Object> properties;
+	protected Map<String,Object> properties;
 	private Validator validator;
 	
 	
@@ -36,7 +38,7 @@ public class Segment extends AbstractContainer implements Configurable{
 	
 
 	@Override
-	public HashMap<String,Object> getProperties(){
+	public Map<String,Object> getProperties(){
 		if(properties == null || properties.size() == 0){
 			return null;
 		}

@@ -1,4 +1,4 @@
-package ctd.protocol.schema.controller;
+package ctd.protocol.schema.controller.loader;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.dom4j.Element;
 
 import ctd.controller.exception.ControllerException;
 import ctd.controller.support.AbstractConfigurableLoader;
+import ctd.protocol.schema.controller.MetaDictionary;
 import ctd.protocol.schema.support.Meta;
 import ctd.util.BeanUtils;
 import ctd.util.converter.ConversionUtils;

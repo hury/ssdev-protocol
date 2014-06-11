@@ -3,6 +3,7 @@ package ctd.protocol.schema.support;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ctd.protocol.schema.Container;
 import ctd.protocol.schema.Element;
@@ -11,7 +12,7 @@ import ctd.protocol.schema.utils.CompatibleUtils;
 
 public class AbstractContainer extends AbstractElement implements Container {
 	protected List<Element> elements = new ArrayList<Element>();;
-	protected HashMap<String,Element> elementsMappings = new HashMap<String,Element>();;
+	protected Map<String,Element> elementsMappings = new HashMap<String,Element>();;
 	protected Order order = Order.ALL;
 	
 	@Override

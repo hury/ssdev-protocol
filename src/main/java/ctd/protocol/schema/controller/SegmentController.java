@@ -1,5 +1,6 @@
 package ctd.protocol.schema.controller;
 import ctd.controller.support.AbstractController;
+import ctd.protocol.schema.controller.loader.SegmentLocalLoader;
 import ctd.protocol.schema.support.container.Segment;
 
 public class SegmentController extends AbstractController<Segment> {

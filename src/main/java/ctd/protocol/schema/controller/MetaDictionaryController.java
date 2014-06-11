@@ -4,6 +4,7 @@ import org.apache.commons.lang.StringUtils;
 
 import ctd.controller.exception.ControllerException;
 import ctd.controller.support.AbstractController;
+import ctd.protocol.schema.controller.loader.MetaDictionaryLocalLoader;
 import ctd.protocol.schema.support.Meta;
 
 public class MetaDictionaryController extends AbstractController<MetaDictionary> {
